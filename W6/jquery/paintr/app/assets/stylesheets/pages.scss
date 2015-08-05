@@ -1,0 +1,27 @@
+.box {
+  display: inline-block;
+  margin: 10px 5px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#canvas {
+  width: auto;
+  height: 75vh;
+  margin: auto 0;
+  font-size: 0;
+  border: 5px solid black;
+  background-size: inherit;
+}
+
+.pixel {
+  display: inline-block;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px dotted lightgrey;
+  border-radius: 100%;
+  background: transparent;
+}

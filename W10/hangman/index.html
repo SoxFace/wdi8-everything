@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <script src="js/hangman.js"></script>
+</head>
+<body>
+
+<div id="container">
+
+  <h1>Don't Hang The Man</h1>
+
+  <div id="gallow">
+    <img src="hmstart.gif" name="hm">
+  </div>
+
+  <div id="game">
+    <a href="javascript:reset()">Start game / Reset game</a>
+    <form name="game">
+      <p>Display Word: <input type="text" name="displayWord"><br>
+      Used Letters: <input type="text" name="usedLetters"></p>
+    </form>
+  </div>
+
+  <div id="alphabet">
+    <p>
+    <a href="javascript:selectLetter('A');">A</a> | 
+    <a href="javascript:selectLetter('B');">B</a> | 
+    <a href="javascript:selectLetter('C');">C</a> | 
+    <a href="javascript:selectLetter('D');">D</a> | 
+    <a href="javascript:selectLetter('E');">E</a> | 
+    <a href="javascript:selectLetter('F');">F</a> | 
+    <a href="javascript:selectLetter('G');">G</a> | 
+    <a href="javascript:selectLetter('H');">H</a> | 
+    <a href="javascript:selectLetter('I');">I</a> | 
+    <a href="javascript:selectLetter('J');">J</a> | 
+    <a href="javascript:selectLetter('K');">K</a> | 
+    <a href="javascript:selectLetter('L');">L</a> |
+    <a href="javascript:selectLetter('M');">M</a> |
+    <a href="javascript:selectLetter('N');">N</a> | 
+    <a href="javascript:selectLetter('O');">O</a> | 
+    <a href="javascript:selectLetter('P');">P</a> | 
+    <a href="javascript:selectLetter('Q');">Q</a> | 
+    <a href="javascript:selectLetter('R');">R</a> | 
+    <a href="javascript:selectLetter('S');">S</a> | 
+    <a href="javascript:selectLetter('T');">T</a> | 
+    <a href="javascript:selectLetter('U');">U</a> | 
+    <a href="javascript:selectLetter('V');">V</a> | 
+    <a href="javascript:selectLetter('W');">W</a> | 
+    <a href="javascript:selectLetter('X');">X</a> | 
+    <a href="javascript:selectLetter('Y');">Y</a> | 
+    <a href="javascript:selectLetter('Z');">Z</a>
+    </p>
+  </div>
+
+  <hr>
+</div>
+
+</body>
+</html>
+

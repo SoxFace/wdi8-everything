@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cities</title>
+</head>
+<body>
+
+    <div id="main">
+        <div>  
+            <select id="state" name="state" placeholder="Select a State"></select>      
+        </div>
+        
+        <div>
+            <select id="city" name="city" placeholder="Select a City"></select>
+        </div>
+        
+        <div>
+            State: <span id="stateDisplay"></span>
+        </div>
+        <div>
+            City: <span id="cityDisplay"></span>
+        </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.6/select2.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.stickit/0.7.0/backbone.stickit.js"></script>
+    
+</body>
+</html>
+
+<script>
+
+$(document).ready(function() {
+    
+    var states = [{
+    id: 1, 
+    name: 'California',
+    cities: [{
+        id: 1,
+        name: 'Los Angeles'
+    }, {
+        id: 2,
+        name: 'San Diego'
+    }, {
+        id: 3,
+        name: 'San Francisco'
+    }]
+}, {
+    id: 2, 
+    name: 'Ohio',
+    cities: [{
+        id: 1,
+        name: 'Cincinnati'
+    }, {
+        id: 2,
+        name: 'Columbus'
+    }]
+}];
+
+var App = {
+    StateCityModel: Backbone.Model.extend({}),
+    StateCityView: Backbone.View.extend({
+        initialize: function() {
+            _.bindAll(this);
+        },
+        bindings: {
+            '#state': {
+                observe: 'state',
+                initialize: function($el) {
+                    $el.select2({ width: 250, allowClear: true });
+                },
+                selectOptions: {
+                    collection: function() {
+                        return states;
+                    },
+                    valuePath: 'id',
+                    labelPath: 'name',
+                    defaultOption: {
+                        label: '',
+                        value: null
+                    }
+                },
+                onSet: function(val) {
+                    this.model.set('city', null);
+                    this.$('#city').select2('val', null);
+                    return val;
+                }
+            },
+            '#city': {
+                observe: ['state', 'city'],
+                initialize: function($el) {
+                    $el.select2({ width: 250, allowClear: true });
+                },
+                selectOptions: {
+                    collection: function() {
+                        var stateId = this.model.get('state');
+                        var state = _.find(states, { id: stateId });
+                        
+                        return state ? state.cities : '';
+                    },
+                    valuePath: 'id',
+                    labelPath: 'name',
+                    defaultOption: {
+                        label: '',
+                        value: null
+                    }
+                },
+                onSet: function(val) {
+                    this.model.set('city', val);
+                    return val;
+                }
+            },
+            '#stateDisplay': 'state',
+            '#cityDisplay': 'city'
+        },
+        render: function() {
+            this.stickit();
+            return this;
+        }
+    })
+};
+
+var view = new App.StateCityView({
+    el: '#main',
+    model: new App.StateCityModel()
+});
+
+view.render();
+});
+</script>

@@ -1,0 +1,8 @@
+<% @movies.each do |movie| %>
+<h1>Movie Title</h1>
+<p><%= movie.title %></p>
+<p><%= image_tag movie.poster_url(:thumb) if movie.poster? %></p>
+<%= link_to 'delete', movie, :method => :delete, :data => { :confirm => "I am sure???? " } %>
+<% end %>
+
+<%= link_to 'new poster', new_movie_path %>

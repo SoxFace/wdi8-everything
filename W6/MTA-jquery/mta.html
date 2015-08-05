@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>BART</title>
+    <link rel="stylesheet" href="css/mta.scss">
+  </head>
+  <body>
+    <div class="container">
+
+    <h1>Subway</h1>
+    <div class="line line--red">N</div>
+    <div class="line line--blue">L</div>
+    <div class="line line--green">6</div>
+
+      <div class="schedule">
+        <h2>Trip Planner</h2>
+        <div class="select-container">
+          <h3>Origin</h3>
+          <select id="origin" name="origin" required>
+            <option disabled selected>Select your current station</option>
+          </select>
+        </div>
+
+        <div class="select-container"> 
+          <h3>Destination</h3>
+          <select id="destination" name="destination" required>
+            <option disabled selected>Select your destination</option>
+            </select>
+          </div>
+
+        <input id="submit" type="submit" value="Plan Trip!">
+
+      </div>
+
+      <div class="journey">
+        <h2>Journey</h2>
+        <div class="origin">
+          <h3>Origin</h3>
+          <p id="origin-selection"></p>
+        </div>
+
+        <div class="destination">
+          <h3>Destination</h3>
+          <p id="destination-selection"></p>
+        </div>
+
+        <div class="stops"></div>
+      </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/mta.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,13 @@
+body {
+
+}
+
+#color {
+  font-size: 300%;
+  display: block;
+  margin: auto;
+  border-radius: 0.2em;
+  margin-top: 50vh;
+  padding: 0.5em;
+  text-align: center;
+}

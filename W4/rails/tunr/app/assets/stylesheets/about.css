@@ -1,0 +1,16 @@
+.main.container {
+  margin-top: 50px;
+}
+
+.main, .side {
+  color: white;
+}
+
+.main {
+  background-color: SlateGray;  
+}
+
+.side {
+  background-color: white; 
+  border-radius: 20px;
+}

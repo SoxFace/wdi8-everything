@@ -1,0 +1,26 @@
+html, body {
+  background-color: #000f00;
+  color: #0f0;
+}
+
+.box {
+  width: 4em;
+  height: 4em;
+  display: inline-block;
+  border: 1px dotted #0f0;
+  text-align: center;
+  line-height: 4em;
+  margin: 0.1em;
+}
+
+section {
+  text-align: center;
+}
+
+#toggle {
+  background-color: red;
+}
+
+#toggle.active {
+  background-color: green;
+}

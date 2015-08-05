@@ -1,0 +1,76 @@
+$dimension: 50
+$bg-color: #eee
+$line-colors: orange blue yellow red gray light-green purple green brown dark-gray
+$line-hexcodes: #ff6318 #2850ad #fccc33 #ee352e #a7a9ac #6cbe45 #b933ad #00933c #996633 #808183
+
+=long-shadow($bg-color)
+    $value: null
+    $shadow-color: darken($bg-color, 15%)
+    @for $i from 1 through $dimension / 1.25
+        $value: #{$i}px #{$i}px 0 #{$shadow-color}, $value
+    text-shadow: $value
+    background-color: $bg-color
+
+html
+    background-color: #222
+    font: 600 $dimension / 1.25 + px 'Helvetica Neue', Helvetica, sans-serif
+    font-smoothing: antialiased
+    color: white
+
+h1
+    border-top: 2px solid
+    padding-right: #{$dimension / 5}px
+    padding-left: #{$dimension / 5}px
+    font-size: 1.25em
+    line-height: 1.05
+    letter-spacing: -1px
+
+a
+    margin-top: 8em
+    margin-right: #{$dimension / 5}px
+    margin-left: #{$dimension / 5}px
+    float: left
+    clear: left
+    font-size: 0.5em
+    line-height: 1
+    text-decoration: none
+    color: rgba(255, 255, 255, 0.065)
+    transition: 500ms
+    &:hover,
+    &:focus
+        color: white
+ 
+.line
+    width: #{$dimension}px
+    height: #{$dimension}px
+    margin: #{$dimension / 5}px
+    border-radius: #{$dimension}px
+    position: relative
+    float: left
+    overflow: hidden
+    line-height: #{$dimension}px
+    text-align: center
+    +long-shadow(darken($bg-color, 15%))
+    color: white
+
+.line--express,
+.line--express > span
+    width: #{$dimension - 6}px
+    height: #{$dimension - 6}px
+
+.line--express
+    margin: #{$dimension / 5 + 3}px
+    border-radius: 0
+    line-height: #{$dimension - 8}px
+    transform: rotate(45deg)
+
+.line--express > span
+    display: block
+    transform: rotate(-45deg)
+
+@for $i from 0 to length($line-colors)
+    .line--#{nth($line-colors, $i + 1)}
+        +long-shadow(nth($line-hexcodes, $i + 1))
+
+.line--yellow
+    color: black

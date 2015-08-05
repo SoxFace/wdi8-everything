@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moma</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><%= link_to('Home', root_path) %></li>
+    <li><%= link_to('Artists', artists_path) %></li>
+    <li><%= link_to('Works', works_path) %></li>
+    <li>|</li>
+    <li><%= link_to('New Artist', new_artist_path) %></li>
+    <li><%= link_to('New Work', new_work_path) %></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<footer class="footer">
+  <p>&copy; WDIWeekIV 2015</p>
+</footer>
+
+</body>
+</html>

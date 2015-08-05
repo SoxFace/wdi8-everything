@@ -1,0 +1,51 @@
+namespace :morning do
+  desc "Turn off the annoying alarm"
+  task :turn_off_alarm do
+    puts "Turning off the alarm..."
+  end
+
+  desc "Get Pretty"
+  task :groom_self do
+    puts "Brushing teeth..."
+    puts "Shaving..."
+    puts "Showering..."
+    puts "Slugging whiskey..."
+  end
+
+  desc "Java Java Java"
+  task :make_coffee do
+    cups = ENV['COFFEE'] || 2 # setting environment variable
+    puts "Making #{cups} cups of coffee"
+  end
+
+  task :walk_dog do
+    puts "Walk little dog"
+  end
+
+  # Tasks depend on other tasks
+
+  task :get_ready => [:turn_off_alarm, :groom_self, :make_coffee, :walk_dog] do
+    puts "Oh god, ready to face the day..."
+  end
+end
+
+# Default rake command - i.e shortcut just say rake and it'll run this file
+task :default => 'morning:get_ready'
+
+# Adding another task to exisitng task
+namespace :morning do
+  task :groom_self do
+    puts "Brushing beard..."
+  end
+end
+
+namespace :afternoon do
+  desc 'Make more coffee'
+  task :make_coffee do
+    Rake::Task['morning:make_coffee'].invoke
+    puts "Adding some rum..."
+    puts "Ready for the afternoon..."
+  end
+end
+
+

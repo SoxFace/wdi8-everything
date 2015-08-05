@@ -1,0 +1,39 @@
+  <a href="#">Home</a>
+  <a href="#posts/chico">Featured Posts</a>
+  <div id="main"></div>
+
+  <script id="appView-template" type="text/x-template">
+    <h2>Recent Posts</h2>
+    <ul id="posts"></ul>
+  </script>
+
+  <script id="postListView-template" type="text/x-underscore-template">
+   <h3>{{ title }}</h3>
+   </script>
+
+   <script id="postView-template" type="text/x-underscore-template">
+   <h2>{{ title }}</h2>
+   <p>{{ content }}</p>
+   <aside id="comments"></aside>
+
+   <form>
+     <div>
+        <label for="author">Name:</label><br>
+        <input id="author">
+      </div>
+      <div>
+        <label for="content">Comment:</label><br>
+        <textarea id="content"></textarea>
+      </div>
+      <button>Post comment</button>
+    </form>
+  </script>
+
+  <script id="commentView-template" type="text/x-underscore-template">
+    <blockquote>
+      {{ content }}
+
+      <br>
+      &mdash; <cite>{{ author }}</cite>, {{ created_at }}
+    </blockquote>
+  </script>

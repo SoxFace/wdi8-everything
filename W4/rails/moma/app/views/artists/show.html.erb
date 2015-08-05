@@ -1,0 +1,21 @@
+<h1><%= @artist.name %></h1>
+<p>
+  <%= link_to 'Edit artist', edit_artist_path(@artist) %>
+  <%= link_to 'Delete artist', @artist, :method => 'delete', :data => { :confirm => "Are you sure?" } %>
+</p>
+
+<p><%= image_tag @artist.image, :class => 'portrait' %>
+  <ul>
+    <li>Nationality: <%= @artist.nationality %></li>
+    <li>DOB: <%= @artist.dob.strftime('%B %e, %Y') %></li>
+    <li>Period: <%= @artist.period %></li>
+  </ul>
+</p>
+
+<% if @artist.works.any? %>
+<h2>Works</h2>
+<% end %>
+
+<% @artist.works.each do |work| %>
+  <%= link_to(image_tag(work.image, :class => 'thumb'), work) %>
+<% end %>
